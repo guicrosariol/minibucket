@@ -9,7 +9,7 @@ interface BucketProps {
 }
 
 export class Bucket {
-  private id: string;
+  public readonly id: string;
   public readonly bucketsPath: string;
   public readonly name: string;
   public readonly description: string;

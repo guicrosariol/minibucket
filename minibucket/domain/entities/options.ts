@@ -1,5 +1,6 @@
 export interface OptionsProps {
-  bucketsPath?: string;
+  bucketsPath: string;
+  bucketDb: boolean
 }
 
 export class Options {
@@ -15,6 +16,7 @@ export class Options {
     if (!Options.instance) {
       Options.instance = new Options({
         bucketsPath: "./minibucket/buckets",
+        bucketDb: true
       });
     }
     return Options.instance;
