@@ -5,8 +5,8 @@ import path from "node:path";
 
 export class Db {
   static create() {
-    const dirPath = path.resolve('buckets');
-
+    const dirPath = path.resolve(optionsInstance.data.bucketsPath);
+    
     if (!fs.existsSync(dirPath)) {
     fs.mkdirSync(dirPath, { recursive: true });
     }
@@ -20,6 +20,7 @@ export class Db {
         bucketsPath TEXT NOT NULL
       )
       `)
+      
     return db;
   }
 }

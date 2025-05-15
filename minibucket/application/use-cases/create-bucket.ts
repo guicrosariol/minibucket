@@ -15,9 +15,9 @@ export class CreateBucketUseCase {
     private OptionsInstance: Options
   ) { }
 
-  async execute(props: CreateBucketUseCaseProps) {
+  execute(props: CreateBucketUseCaseProps) {
     const bucket = Bucket.create(props);
-    await this.bucketFolderRepository.create(bucket);
+    this.bucketFolderRepository.create(bucket);
 
     if (this.OptionsInstance.data.bucketDb === true) {
       const doesBucketExist = this.bucketDbRepository.findById(bucket.id);

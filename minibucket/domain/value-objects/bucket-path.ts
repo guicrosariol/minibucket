@@ -18,11 +18,11 @@ export class BucketPath {
     bucketName,
     bucketId,
   }: BucketPathProps) {
-    const PathInstance = new BucketPath({
+    const pathInstance = new BucketPath({
       bucketName,
       bucketId,
     });
-    return `${optionsInstance.data.bucketsPath}/${PathInstance.bucketName}-${PathInstance.bucketId}`
+    return `${optionsInstance.data.bucketsPath}/${pathInstance.bucketName}-${pathInstance.bucketId}`
   }
 }
 

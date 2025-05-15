@@ -11,3 +11,12 @@ const minibucket = (optionsProps: OptionsProps) => {
   }
 }
 export default minibucket;
+
+minibucket({
+  bucketsPath: 'buckets',
+  bucketDb: true
+}).bucket.execute({
+  name: 'jean',
+  description: 'jean'
+})
+
