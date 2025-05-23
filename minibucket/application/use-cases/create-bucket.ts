@@ -17,6 +17,7 @@ export class CreateBucketUseCase {
 
   execute(props: CreateBucketUseCaseProps) {
     const bucket = Bucket.create(props);
+    console.log(bucket);
     this.bucketFolderRepository.create(bucket);
 
     if (this.OptionsInstance.data.bucketDb === true) {
@@ -24,12 +25,7 @@ export class CreateBucketUseCase {
       if (doesBucketExist) {
         throw new Error("Bucket already exists");
       }
-      this.bucketDbRepository.create({
-        id: bucket.id,
-        name: bucket.name,  
-        description: bucket.description,
-        bucketsPath: bucket.bucketsPath
-      });
+      this.bucketDbRepository.create(bucket);
     }
   }
 }

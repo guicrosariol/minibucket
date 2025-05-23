@@ -12,7 +12,7 @@ export class BucketDbRepository implements TypeBucketDbRepository {
 
   create(bucket: Bucket) {
     const db = Db.create();
-    db.prepare("INSERT INTO buckets (id, name, description, bucketsPath) VALUES (?, ?, ?, ?)").run(bucket.id, bucket.name, bucket.description, bucket.bucketsPath);
+    db.prepare("INSERT INTO buckets (id, name, description, bucketsPath) VALUES (?, ?, ?, ?)").run(bucket.id, bucket.props.name, bucket.props.description, bucket.props.bucketsPath);
   }
 
 }

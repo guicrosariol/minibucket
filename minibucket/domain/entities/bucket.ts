@@ -1,34 +1,22 @@
-import { UUID } from "../../core/uuid";
+import { Entity } from "../../core/entites/entity";
+import { UUID } from "../../core/entites/uuid";
+import { optionsInstance } from "../../core/options-provider";
 import { BucketPath } from "../value-objects/bucket-path";
 
 interface BucketProps {
-  id?: string;
   name: string;
   description: string;
-  bucketsPath?: string;
+  bucketsPath: string;
 }
 
-export class Bucket {
-  public readonly id: string;
-  public readonly bucketsPath: string;
-  public readonly name: string;
-  public readonly description: string;
-
-  constructor({
-    name,
-    description,
-  }: BucketProps) {
-    this.id = UUID.create();
-    this.name = name;
-    this.description = description;
-    this.bucketsPath = BucketPath.create({
-      bucketName: name,
-      bucketId: this.id
-    });
-  }
-
+export class Bucket extends Entity<BucketProps> {
   static create(props: BucketProps) {
-    return new Bucket(props)
+    const bucketId = UUID.create()
+    props.bucketsPath = BucketPath.create({
+      bucketName: props.name,
+      bucketId
+    })
+    return new Bucket(props, bucketId)
   }
 }
 

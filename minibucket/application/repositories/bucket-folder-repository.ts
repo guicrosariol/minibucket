@@ -4,7 +4,7 @@ import type { TypeBucketFolderRepository } from "../../domain/repositories/bucke
 
 export class BucketFolderRepository implements TypeBucketFolderRepository {
   async create(bucket: Bucket): Promise<void> {
-    await mkdir(bucket.bucketsPath, { recursive: true });
+    await mkdir(bucket.props.bucketsPath, { recursive: true });
   }
 }
 

@@ -2,21 +2,27 @@ import { makeCreateBucketUseCase } from "./application/factories/create-bucket";
 import { optionsInstance } from "./core/options-provider";
 import { type OptionsProps } from "./domain/entities/options";
 
-const minibucket = (optionsProps: OptionsProps) => {
-  optionsInstance.data = optionsProps
+
+type MiniBucketReturn = {
+  options: OptionsProps;
+  bucket: ReturnType<typeof makeCreateBucketUseCase>;
+};
+
+const minibucket = (optionsProps: OptionsProps): MiniBucketReturn => {
+  optionsInstance.data = optionsProps;
 
   return {
     options: optionsInstance.data,
-    bucket: makeCreateBucketUseCase
-  }
-}
+    bucket: makeCreateBucketUseCase()
+  };
+};
+
 export default minibucket;
 
 minibucket({
-  bucketsPath: 'buckets',
-  bucketDb: true
+  bucketDb: true,
+  bucketsPath: 'sla'
 }).bucket.execute({
-  name: 'jean',
-  description: 'jean'
+  name: 'gui',
+  description: 'gui'
 })
-

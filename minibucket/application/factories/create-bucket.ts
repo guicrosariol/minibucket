@@ -3,6 +3,8 @@ import { CreateBucketUseCase } from "../use-cases/create-bucket";
 import { BucketDbRepository } from "../repositories/bucket-db-repository";
 import { optionsInstance } from "../../core/options-provider";
 
-const bucketFolderRepository = new BucketFolderRepository()
-const bucketDbRepository = new BucketDbRepository()
-export const makeCreateBucketUseCase = new CreateBucketUseCase(bucketFolderRepository, bucketDbRepository, optionsInstance)
+export function makeCreateBucketUseCase() {
+  const bucketFolderRepository = new BucketFolderRepository()
+  const bucketDbRepository = new BucketDbRepository()
+  return new CreateBucketUseCase(bucketFolderRepository, bucketDbRepository, optionsInstance)
+}
