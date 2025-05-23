@@ -186,10 +186,3 @@ var minibucket = (optionsProps) => {
   };
 };
 var minibucket_default = minibucket;
-minibucket({
-  bucketDb: true,
-  bucketsPath: "sla"
-}).bucket.execute({
-  name: "gui",
-  description: "gui"
-});

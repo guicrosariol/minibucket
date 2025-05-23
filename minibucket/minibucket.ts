@@ -18,11 +18,3 @@ const minibucket = (optionsProps: OptionsProps): MiniBucketReturn => {
 };
 
 export default minibucket;
-
-minibucket({
-  bucketDb: true,
-  bucketsPath: 'sla'
-}).bucket.execute({
-  name: 'gui',
-  description: 'gui'
-})
